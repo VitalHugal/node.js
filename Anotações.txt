@@ -465,4 +465,3 @@ Remover pacote com npm
 - Isso faz com que o pacote seja removido do package.json também;
 - vamos ver na prática;
 _______________________________________________________
-
