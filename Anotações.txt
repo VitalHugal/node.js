@@ -474,6 +474,69 @@ EXPRESS
 - O Express torna a criação de apps muito mais simplificada, do que com os Core Modules;
 - Vamos instalá-lo;
 
+- npm install express
+
 - tem também adônis.js
 _______________________________________________________
 
+Oque são rotas
+
+- Rota é um conceito super importante e presente em aplicações web;
+- Basicamente são as URL's que acessamos;
+- Se criamos uma rota/produtos, podemos acessar através da URL www.nossosite.com/produtos;
+- Quando o usuário acessa podemos acessar várias lógicas, como carregar produtos do banco de dados;
+- Ou seja, rotas são uma ponte entre o usuário e a lógica da aplicação;
+_______________________________________________________
+
+Primeiros passos 
+
+- O setup inicial do Express é simples, mas precisamos seguir alguns passos;
+- Importar o Express e invocá-lo;
+- Definir uma porta base para a aplicação;
+- Criar uma rota (URL que será acessada);
+- Executar o método listen na porta especificada;
+- Vamos ver na prática!
+_______________________________________________________
+
+Renderizando HTML 
+
+- Para enviar HTML como resposta utilizamos o método sendFile;
+- Isso faz com que o arquivo seja renderizado no navegador;
+- Precisamos acessar o arquivo por meio do diretório base, isso requer o módulo path;
+- Vamos ver na prática!
+_______________________________________________________
+
+Problema de atualização
+
+- Precisamos toda vez reiniciar o servidor para receber as atualizações, isso é muito custoso;
+- Vamos então instalar o módulo Nodemon;
+- Que a cada vez que o arquivo é salvo reinicia o projeto, facilitando nossa vida;
+- Vamos salvar como dependência de desenvolvimento (--save-dev);
+- Vamos ver na prática;
+_______________________________________________________
+
+Middlewares
+
+- Middlewares são códigos que podem ser executados no meios/entre(middle) de alguma ação e outra;
+- Por exemplo: verificar se usuário está logado, podemos ter um para esta verificação;
+- O método que nos dá acesso a utilizar middlwares é o use no Express;
+- vamos ver na prática!
+_______________________________________________________
+
+Parâmetros por URL
+
+- Podemos resgatar os parâmetros da URL por meio do req;
+- Acessamos req.params.<nome>;
+- Onde nome deve ser o que está definido na URL do Express;
+- Que fica desta forma:/users/:id;
+- Neste caso estaríamos buscando o usuário no banco de dados pelo id;
+- E o parâmetro vem pela URL;
+_______________________________________________________
+
+Enviado dados por POST
+
+- Para enviar os dados vamos precisar criar um form e mandar os dados via POST para alguma URL;
+- No Express precisamos colocar alguns middlewares como o express.json para ler os dados do body;
+-  também uma rota que vai receber estes dados, utilizando o método post do Express;
+- Vamos ver na prática!
+_______________________________________________________
