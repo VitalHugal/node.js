@@ -614,8 +614,66 @@ Criando layouts
 - Podemos criar layouts para reaproveitar código entre páginas;
 - Vamos criar uma pasta chamada layouts em views;
 - E nela criamos o template que será repetido;
-- Colocamos uma tag especial {{body}};
+- Colocamos uma tag especial {{{body}}};
 - Para que neste local o 'corpo' do site seja inserido;
 - Em todas as nossas views agora o layout é repetido;
 _______________________________________________________
 
+Passando dados para a view
+
+- Vamos passar os dados por meio do método render;
+- Enviamos um objeto com chaves e valores;
+- E isso nos possibilita acessar estes dados no template;
+- Vamos utilizar a sintaxe de {{{dado}}};
+- E o dado será impresso;
+_______________________________________________________
+
+Utilizando condicionais
+
+- Utilizar uma estrutura condicional nos permite mais flexibilidade no layout;
+- Podemos utilizar o if no Handlebars;
+- A sintaxe é {{#if alguma coisa }} {{/if}}
+- Só imprime o que está entre as condicionais, se o resultado dela for verdadeiro;
+- Precisamos encaminhar o dado a ser validado pelo backend;
+_______________________________________________________
+
+Utilizando o else
+
+- O else é um complemento do if;
+- Utilizamos no Handlebars para a exibição de outra parte do layout, caso a condição seja falsa;
+- Isso nos dá mais flexibilidade ainda!;
+- A sintaxe é: {{#if alguma coisa}} {{else}} {{/if}}
+_______________________________________________________
+
+Estrutura e repetição
+
+- As estruturas de repetição no Handlebars são feitas pelo operador each;
+- A sintaxe é {{#each }}...{{/each}}
+- Em um array podemos chamar os itens com: {{this}}
+- Então cada um dos itens é acessado na viw;
+- Como o Handlebars prega um template mais limpo, devemos mandar apenas o necessário para o front-end;
+_______________________________________________________
+
+Utilizando o with
+
+- O with nos permite abstrair um objeto;
+- Ou seja, podemos acessar as propriedades sem nos referenciarmos sempre ao objeto antes;
+- A sintaxe é: {{#with objeto}}...{{/with}}
+- Desta maneira nosso código fica ainda mais simples;
+_______________________________________________________
+
+Conhecendo os partials
+
+- Os partials são como mini templates, que precisam ser repetidos em diversos locais da nossa aplicação;
+- Precisamos realizar algumas modificações na implementação do Handlebars;
+- Os partinals geralmente ficam em views/partials;
+- E Utilizamos a sintaxe: {{> partial}} para chamá-lo no projeto;
+_______________________________________________________
+
+CSS com Handlebars e Express
+
+- A inclusão de CSS no Handlebars é muito semelhante a que realizamos apenas com Express;
+- Precisamos definir a pasta dos arquivos estáticos;
+- E vamos linkar o CSS com o nosso layout em comum para todas as páginas;
+- Isso torna possível a estilizar os nossos projetos;
+_______________________________________________________
