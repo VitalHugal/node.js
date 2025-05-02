@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 app.use(express.static('public'))
 
 app.get('/mouse', (req, res) => {
-
+    
     res.render('mouse')
 });
 app.get('/teclado', (req, res) => {
