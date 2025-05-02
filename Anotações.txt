@@ -566,3 +566,56 @@ Criando uma página 404
 - E enviar um arquivo de template referente a esta página;
 - Vamos ver na prática;
 _______________________________________________________
+
+Template Engine
+
+O que é Template Engine ?
+
+- Uma forma de deixar o HTML dinâmico, inserindo variáveis do backe-end no front-end;
+- Podemos também criar layouts, que são reaproveitados;
+- É essencial para projetos que usam banco de dados, que não são estáticos;
+- Temos diversos disponíveis: EJS, Pug, Handlebars, por exemplo;
+- Todos atingem o mesmo objetivo, porém há algumas diferenças de setup e funcionalidades;
+_______________________________________________________
+
+Conhecendo o Handlebars
+
+- O handlebars é uma das template engines mais utilizadas;
+- Colocamos os dados dinâmicos no HTML entre {{}} para serem impresso;
+- Podemos criar condicionais e também loops no template;
+- Conhecido pela sua sintaxe limpa n front, nos força a não executar lógica no HTML;
+- O nome do pacote é express-handlebars;
+_______________________________________________________
+
+Mudança no Handlebars
+
+- Houve alteração que vai quebrar o código;
+- Para reparar basta trocar esta linha de código;
+
+app.engine('handlebars', exphbs())
+
+- por
+
+app.engine('handlebars', exphbs.engine())
+_______________________________________________________
+
+Instalando o Handlebars
+
+- Vamos precisar instalar o Express eo Handlebars, para o correto funcionamento;
+- Podemos também utilizar o Nodemon, para nos ajudar;
+- No index precisamos importar os pacotes instalados;
+- E também adicionar ao Express a engine do Handlebars;
+- Criaremos uma view no diretório views, com a extensão handlebars;
+- Utilizamos o método render para enviar esta view para a requisição;
+_______________________________________________________
+
+Criando layouts
+
+- Podemos criar layouts para reaproveitar código entre páginas;
+- Vamos criar uma pasta chamada layouts em views;
+- E nela criamos o template que será repetido;
+- Colocamos uma tag especial {{body}};
+- Para que neste local o 'corpo' do site seja inserido;
+- Em todas as nossas views agora o layout é repetido;
+_______________________________________________________
+
