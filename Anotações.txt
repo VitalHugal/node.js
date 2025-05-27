@@ -677,3 +677,48 @@ CSS com Handlebars e Express
 - E vamos linkar o CSS com o nosso layout em comum para todas as páginas;
 - Isso torna possível a estilizar os nossos projetos;
 _______________________________________________________
+
+SEQUELIZE
+
+Oque é ORM ?
+
+- Object Relational Mapper(ORM);
+- Abstrai a complexidade das queries, para trabalharmos com métodos;
+- Nos concentramos na regra de negócios e não nos comandos SQL;
+- Uma ORM muito utilizada para Node.js é a sequelize;
+- Em alguns casos uma ORM pode trazer pejuízos de performance;
+- A query pura executa mais rapidamente do que a ORM;
+- Temos código "gerado", ou seja, não vemos por baixos dos panos;
+_______________________________________________________
+
+Oque é Sequelize ?
+
+- Uma ORM para Node.js;
+- Ela é baseada em promises (then, catch);
+- Tem integração para vários bancos relacionais, como o mysql;
+- Precisamos sempre criar um Model, que é o reflexo da nossa tabela em uma classe;
+- Precisamos instalar o pacote, já que é um módulo externo;
+_______________________________________________________
+
+Instalando o SEQUELIZE
+
+- Para instalar o Sequilize utilizamos o pacote sequelize;
+- E para conectar precisamos passar os mesmos dados que no outro pacote: banco, usuário e senha;
+- Instaciando a classe Sequelize;
+- É pos´´ivel checar a conexão com o método authenticate;
+- Vamos ver;
+
+IMPORTANTE para o sequelize funcionar tem que tem mysql2 como driver
+
+npm install mysql2
+_______________________________________________________
+
+Criando o Model
+
+- Para criar um Model temos que instanciar uma classe que representará um tabela;
+- Um Model User cria uma nova tabela chamada users;
+- Colocamos os campos e os tipos dele como propriedades do Model;
+- Futuramente ele será utilizado para as operações entre aplicação e banco;
+- O método sync faz a criação das tabelas baseada nos models;
+
+_______________________________________________________
