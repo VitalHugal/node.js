@@ -1,8 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const conn = require('./db/conn');
+const sequelize = require('./db/conn');
 
-const User = require('./')
 
 const app = express()
 
@@ -23,8 +22,4 @@ app.get('/', function (req, res) {
   res.render('home')
 })
 
-conn.sync().then(() => {
-  app.listen(3000)
-
-}).catch(err => console.log(err))
-
+app.listen(3000)

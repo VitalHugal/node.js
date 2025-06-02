@@ -7,3 +7,6 @@ const sequelize = new Sequelize('sequelize', 'root', 'root', {
 });
 
 module.exports = sequelize
+
+
+

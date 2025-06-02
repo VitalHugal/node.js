@@ -1,19 +1,21 @@
-const { DataTypes} = require('sequelize')
-
-const db = require('../db/conn')
+const { DataTypes } = require('sequelize');
+const db = require('../db/conn');
 
 const User = db.define('User', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    occupation:{
+    occupation: {
         type: DataTypes.STRING,
-        required: true,
+        allowNull: false 
     },
-    newsletter:{
+    newsletter: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false 
     }
-})
+});
 
-module.exports = User
+module.exports = User;
+
+
