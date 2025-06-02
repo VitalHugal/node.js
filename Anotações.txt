@@ -766,3 +766,81 @@ Excluindo registro relacionado
 - E uma rota para receber estas informações e executar a remoção utilizando o método destroy;
 _______________________________________________________
 
+MVC 
+
+Oque é MVC ?
+
+- Um acrônimo de MODEL VIEW CONTROLLER
+- É um padrão de arquitetura de software, que pode deixar nossas aplicações mais organizadas;
+- A aplicação é dividida em camadas, cada sua responsabilidade;
+- Teremos uma nova estrutura de arquivos e pastas;
+- E a aplicação obedece um novo fluco, que se repete para todas as ações;
+- aplicações em MVC tendem a ter uma manutenção/evolução mais fácil;
+_______________________________________________________
+
+O papel do Model no MVC (Camada do modelo (MODEL))
+
+- É um acamda onde vamos interagir com o banco de dados;
+- Normalmente interage com os arquivos do Controller;
+- Responsável por resgatar, atualizar, remover e criar dados;
+- è comum que cada tabela seja um Model, assim como fazemos com o setup do Sequilize;
+- Os Models são quem controlam a arquitetura do sistema, é fácil entender a regra de négocio analisando eles;
+_______________________________________________________
+
+O papel da View no MVC (Camada do modelo (VIEW))
+
+- É onde apresentamos os dados que estão no banco;
+- Geralmente a view interage com o controller, que é o meio de campo;
+- E também nas views temos a interação com o usuário, como formulários para inserir dados no sistema;
+- É correto não haver lógica/regra de negócios na view, ou o mínimo possível;
+- Normalmente a exibição é feita através do HTML;
+_______________________________________________________
+
+O papel da View no MVC (Camada do modelo (CONTROLLER))
+
+- É onde temos a interação entre Model e view;
+- Podemos definir qual view será impressa, processar dados que foram enviados para o banco ou para a view;
+- Os controllers terão um código parecido com os das rotas, que estamos criando até então no curos;
+_______________________________________________________
+
+Nossa estrutura Com MVC
+
+- Nossa estrutura será composta por:
+- controllers: pasta que ficam os arquivos de Controller;
+- models: pasta que ficam os arquivos de Model;
+- views: pasta que ficam os arquivos de view;
+- routes: pasta que ficam os arquivos de rotas;
+- index.js: arquivo que inicializa a aplicação;
+_______________________________________________________
+
+Criando nosso Model
+
+- Vamos criar nosso Model dentro da pasta models;
+- Precisamos também sincronizar para criar a tabela, então vamos importar no index.js
+- Este é o primeiro passo do nosso MVC, declarando uma entidade que faz parte da regra de negócio;
+_______________________________________________________
+
+Criando o Controller
+
+- Vamos agora criar nosso controller, que ficará dentro da pasta controller;
+- Será uma classe que contém ad funções com a lógica de cada rota;
+- Algumas só encaminharão as views, outras vão processar dados e passar para os Models;
+- Por isso vamos importar o Model que o controller utiliza;
+_______________________________________________________
+
+Criando as rotas
+
+- Criaremos as rotas com ajuda do router;
+- onde cada arquivo será responsável por um controller;
+- E em cada rota vamos utilizar uma das funcões do controller;
+- Por isso vamos importar o controller responsável pela lógica das rotas;
+- O routre precisa ser importado no index da aplicação;
+_______________________________________________________
+
+Dando uma cara ao projeto
+
+- Vamos aproveitar este início de estrutura e criar um projeto completo em MVC;
+- Primeiramente vamos dar alguns estilos iniciais;
+- E depois voltamos as outras partes da aplicação para avançar no nosso projeto;
+
+_______________________________________________________
