@@ -705,7 +705,7 @@ Instalando o SEQUELIZE
 - Para instalar o Sequilize utilizamos o pacote sequelize;
 - E para conectar precisamos passar os mesmos dados que no outro pacote: banco, usuário e senha;
 - Instaciando a classe Sequelize;
-- É pos´´ivel checar a conexão com o método authenticate;
+- É possíivel checar a conexão com o método authenticate;
 - Vamos ver;
 
 IMPORTANTE para o sequelize funcionar tem que tem mysql2 como driver
@@ -722,3 +722,47 @@ Criando o Model
 - O método sync faz a criação das tabelas baseada nos models;
 
 _______________________________________________________
+
+Forçando a recriação de banco de dados 
+
+- Podemos forçar a reconstrução das tabelas;
+- No método sync, onde são sincronizados os models e as tabelas;
+- Vamos colocar um atributo force como true;
+- exemplo syn({force: true})
+- note que os dados são perdidos neste processo;
+
+_______________________________________________________
+
+Sobre os relacionamentos
+
+- Em bancos relacionais podemos criar relacionamentos entre as tabelas;
+- para concretizar isso no Sequelize vamos precisra de dois Models, ou seja, precisamos criar mais um no nosso projeto;
+- Deposi precisamos inserir um método de realcionamento em algum dos moldes que vai criar a relação;
+- após o sync uma coluna que faz a relaçõa entre as tabelas será criada;
+- Que representa a foreign key;
+_______________________________________________________
+
+Adicionando dado relacionado
+
+- Para adicionar o dado relacionado o fluxo é quase o mesmo;
+- O grande detalhe é que precisamos passar o id do item que o relaciona;
+- Podemos fazer com um input do tipo hidden;
+- Dentro do form que contém os dados do novo item;
+- E enviando para uma nova rota no nosso sistema;
+_______________________________________________________
+
+Resgatando dados relacionados
+
+- Precisamos definir as relações entre os dois Models, podemos fazer isso no Model de endereços;
+- Depois basta utilizar o operador include com o nome do Model, onde estamos resgatando o dado;
+- Isso faz com que os registros associados também venham na seleção;
+- Como há dados relacionados precisamos remover o raw;
+_______________________________________________________
+
+Excluindo registro relacionado
+
+- Para remover itens relacionados utilizaremos o memso processo de remoção de itens;
+- Criaremos um formu´lario que envia o id do item;
+- E uma rota para receber estas informações e executar a remoção utilizando o método destroy;
+_______________________________________________________
+
