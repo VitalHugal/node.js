@@ -891,3 +891,23 @@ Completando tarefas
 - Precisamos de um form na lista para fazer o envio e também criar a rota;
 _______________________________________________________
 
+Projeto pensamento
+
+- Dependência utilizadas
+
+npm install 
+bcryptjs 
+connect-flash 
+cookie-parser 
+cookie-session 
+express 
+express-flash 
+express-session 
+mysql2 
+sequelize 
+nodemon 
+session-file-store
+express-handlebars
+
+npm install express-handlebars bcryptjs connect-flash cookie-parser cookie-session express express-flash express-session mysql2 sequelize nodemon session-file-store
+_______________________________________________________
