@@ -842,5 +842,52 @@ Dando uma cara ao projeto
 - Vamos aproveitar este início de estrutura e criar um projeto completo em MVC;
 - Primeiramente vamos dar alguns estilos iniciais;
 - E depois voltamos as outras partes da aplicação para avançar no nosso projeto;
-
 _______________________________________________________
+
+Salvando dados
+
+- Agora é a hora de interagir com o banco;
+- Ou seja, criar um vinculo entre um Controller e um Model;
+- Criaremos uma nova função para tratar os dados e enviaremos para o banco;
+- Como o Sequelize tem alguns métodos prontos, o trabalho do nosso Model fica fica mais simples;
+_______________________________________________________
+
+Resgatando dados
+
+- Para resgatar dados o processo é semelhante;
+- Vamos criar uma rota get que acessar uma função do Contrroler;
+- Nesta função tratremos os dados através do Model;
+- E assim podemos imprimir o HTML;
+_______________________________________________________
+
+Removendo dados
+
+- Para remover um dado vamos utilizar o método destroy do Sequelize;
+- Condicionado por um POST que vai até a rota determinada pelo router;
+- Ativando uma função do Controller;
+- E depois direcionamos para a home novamente;
+_______________________________________________________
+
+Editando dados
+
+- O primeiro passo da edição nós ja sabemos: resgatar dado e colocar no formulário em uma nova view;
+- Para isso vamos precisar de uam função no Controller, pegando os dados via Model;
+- E então criar arota que corresponde a um id de uma Task, neste caso;
+- preenchendo os valores dos inputs com o que foi restatado do banco; 
+_______________________________________________________
+
+Enviando dados para editar 
+
+- Agora no passo final, precisamos enviar os dados;
+- Vamos criar uma nova função no Controller que processa o que veio do form;
+- Esta mesma função cham o model e executa a função de update;
+- Retornando assim o usuário para onde ele possa ver a Task atualizada;
+_______________________________________________________
+
+Completando tarefas
+
+- Realizaremos uma ação do nsso sistema para completar ou "descompletar" as tarefas;
+- Basicamente vamos criar uma rota de update que só atualiza o atributo done de Task;
+- Precisamos de um form na lista para fazer o envio e também criar a rota;
+_______________________________________________________
+
