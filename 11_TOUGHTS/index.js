@@ -9,10 +9,17 @@ const app = express()
 const conn = require('./db/conn')
 
 //models
-const Tought = require('./models/Tought')
+const Tought = require('./models/Thought')
 const User = require('./models/User')
 
-app.engine('handlebars', exphbs.engine);
+//routes
+const thoughtsRoutes = require('./routes/thoughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
+
+//controller 
+const ThoughtController = require('./controllers/ThoughtsController')
+
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 app.use(
@@ -27,7 +34,7 @@ app.use(
 
 //session middleware
 app.use(session({
-    name: session,
+    name: 'session',
     secret: 'nosso_secret',
     resave: false,
     saveUninitialized: false,
@@ -59,8 +66,14 @@ app.use((req, res, next) => {
     next()
 })
 
+//routes
+app.use('/thoughts', thoughtsRoutes);
+app.use('/', authRoutes);
+app.use('/', thoughtsRoutes);
+
 conn
     .sync()
+    // .sync({ force: true })
     .then(() =>
         app.listen(3000)
     )
