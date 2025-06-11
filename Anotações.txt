@@ -911,3 +911,97 @@ express-handlebars
 
 npm install express-handlebars bcryptjs connect-flash cookie-parser cookie-session express express-flash express-session mysql2 sequelize nodemon session-file-store
 _______________________________________________________
+
+MongoDB
+
+Oque é NoSQL ?
+
+- São bancos de dados focados em documentos(documents);
+- A modelagem de dados com relacionamentos é opcional;
+- Não utilizamos queries e sim métodos de classes para trabalhar com os dados;
+- As tabelas não exitem, temos as collections
+- Não precisamos definir a estrutura da collection previamente;
+- MongoDB é um banco NoSQL;
+_______________________________________________________
+
+Oque é MongoDB ?
+
+- Um banco de dados orientado a documento;
+- Os dados ficam salvos em estruturas parecidas com JSON;
+- Na verdade os dados tem um nome chamado "BJSON";
+- Frequentemente utilizado com Node.js;
+- Diferente do SQL temos indices primários e secundários;
+- Utilizaremos um driver para conectar a nossa aplicação com o MongoDB semelhante ao MySQL e Sequelize;
+_______________________________________________________
+
+Para trabalhar com MongoDB no windowns é necessário duas ferramentas
+
+- MongoDB que é o sistema do banco de dados;
+- MongoDB tools, ferramenta para importação e exportação de bancos;
+_______________________________________________________
+
+Principais entidades
+
+- Database: é onde ficam as nossas collections e dados;
+- Collections: são como as tabelas nos bancos relacionais, nelas vamos inserir os dados;
+- Documents: são os dados, no MongoDB tem esta nomenclatura;
+- Collections podem ser criadas livremente a qualquer momento e não possuem colunas fixas para os dados;
+ _______________________________________________________
+
+ MongoDB e JSON
+ - O tipo de dado inserido na tabela é o BSON, uma variação de JSON;
+ - O BSON é semelhante ao JSON, porém com recursos a mais ;
+ - A forma de criar um BSON é igual ao JSON, veja;
+ {
+    name: "VICTOR",
+    age:24
+ }
+
+ BSON mongoDB - caso queira conhecer mais a documentação;
+ _______________________________________________________
+
+Primeiro mergulho
+
+- Vamos agora dar o nosso primeiro mergulho no MongoDB;
+- Nossa missão será criar um banco de dados;
+- Criar uma collection;
+- Inserir um dado e resgatar este mesmo dado por meio de um find;
+- Obs: aprenderemos todos estes comandos posteriormente!;
+_______________________________________________________
+
+Conectando ao MongoDB
+
+- Primeiramente vamos precisar instalar o driver no MongoDB, que é mongodb (um pacote de npm);
+- Depois criaremos a conexão, baseada em uma URL com o protocolo mongodb://
+- Através da classe MongoClient
+
+_______________________________________________________
+
+Criando MVC
+
+- Antes de trabalhar com MongoDB vamos criar uma estrutura MVC;
+- Isso vai fortalecer nossos conhecimentos com a arquitetura;
+- E também poderemos comparar o trabalho com SQL x NOSQL;
+_______________________________________________________
+
+Inserindo dados 
+
+- Primeiramente vamos criar um Model, onde este será uma classe de JavaScript, para seguir o MVC;
+- Depois utilizaremos o Model para criar o método save, que executa o insertOne de MongoDB;
+- Por fim é necessário criar o formulário que interage com a rota do sistema;
+_______________________________________________________
+
+Resgatndo dados
+
+- Para resgatar os dados de uma collection vamos utilizar o método find de MongoDB;
+- Os dados vem em um cursos, para converter em array utilizamos toArray;
+- Depois é só passar os dados para o controller e exibir na view;
+_______________________________________________________
+
+Resgatando um dado 
+
+- Para resgatar um dado vamos utilizar o método findOne;
+- Onde podemos filtrar por um campo, que no nosso caso vai ser o _id;
+- Vamos enviar o dado para o Controller e depois para a view;
+_______________________________________________________
+
