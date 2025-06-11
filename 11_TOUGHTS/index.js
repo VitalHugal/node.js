@@ -33,22 +33,40 @@ app.use(
 )
 
 //session middleware
-app.use(session({
-    name: 'session',
-    secret: 'nosso_secret',
-    resave: false,
-    saveUninitialized: false,
-    store: new FileStore({
-        logFn: function () { },
-        path: require('path').join(require('os').tmpdir(), 'sessions'),
-    }),
-    cookie: {
-        secure: false,
-        maxAge: 360000,
-        expires: new Date(Date.now() + 360000),
-        httpOnly: true
-    }
-})
+// app.use(session({
+//     name: 'session',
+//     secret: 'nosso_secret',
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new FileStore({
+//         logFn: function () { },
+//         path: require('path').join(require('os').tmpdir(), 'sessions'),
+//     }),
+//     cookie: {
+//         secure: false,
+//         maxAge: 360000,
+//         expires: new Date(Date.now() + 360000),
+//         httpOnly: true
+//     }
+// })
+// )
+
+app.use(
+    session({
+        name: 'sessionId',
+        secret: 'seuSegredo',
+        resave: false,
+        saveUninitialized: false,
+        store: new FileStore({
+            path: require('os').tmpdir() + '/sessions', // caminho seguro
+            retries: 0, // evita tentativas de regravação
+            logFn: function () { } // desliga logs
+        }),
+        cookie: {
+            secure: false,
+            maxAge: 1000 * 60 * 60 * 24 // 1 dia
+        }
+    })
 )
 
 // flash 

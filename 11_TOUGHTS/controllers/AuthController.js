@@ -12,6 +12,45 @@ module.exports = class AuthController {
         }
     }
 
+    static async loginPost(req, res) {
+        try {
+            const { email, password } = req.body;
+
+            const checkUserExists = await User.findOne({
+                where: { email },
+                attributes: ['id', 'email', 'password']
+            });
+
+            if (!checkUserExists) {
+                req.flash('message', 'Usuário não encontrado.');
+                return res.render('auth/login');
+            }
+
+            if (!checkUserExists.password) {
+                req.flash('message', 'Erro: senha não encontrada no usuário.');
+                return res.render('auth/login');
+            }
+
+            const passCheck = bcrypt.compareSync(password, checkUserExists.password);
+
+            if (!passCheck) {
+                req.flash('message', 'Senha inválida.');
+                return res.render('auth/login');
+            }
+
+            req.session.userid = checkUserExists.id;
+            req.flash('message', 'Auntenticação realizada com sucesso.');
+
+            req.session.save(() => {
+                res.redirect('/')
+            })
+
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Erro interno no servidor');
+        }
+    }
+
     static async register(req, res) {
         try {
             res.render('auth/register')
@@ -26,13 +65,11 @@ module.exports = class AuthController {
 
             const { name, email, password, confirmpassword } = req.body
 
-            // validação de senha
-            if (password != confirmpassword) {
+            if (password !== confirmpassword) {
                 req.flash('message', 'As senhas não conferem, tente novamente!')
                 return res.render('auth/register')
             }
 
-            // verificar se o usuário existe
             const checkUserExists = await User.findOne({ where: { email } })
 
             if (checkUserExists) {
@@ -40,30 +77,36 @@ module.exports = class AuthController {
                 return res.render('auth/register')
             }
 
-            // criar senha criptografada
-            const salt = bcrypt.genSaltSync(20)
+            const salt = bcrypt.genSaltSync(10) // ⚠️ 10 é suficiente
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            const user = {
+            const newUser = await User.create({
                 name,
                 email,
                 password: hashedPassword
-            }
-            console.log('aqui')
-            await User.create(user)
+            })
 
-            req.session.userid = user.id
-            console.log('Usuário cadastrado com sucesso:', user)
             req.flash('message', 'Cadastro realizado com sucesso!')
+            req.session.userid = newUser.id
 
+            // Redireciona direto para evitar lentidão do session.save()
             req.session.save(() => {
                 res.redirect('/')
             })
 
         } catch (error) {
+            console.error('Erro no registerPost:', error)
             req.flash('message', 'Erro interno no servidor, tente novamente.')
-            console.log(error)
             return res.redirect('/register')
+        }
+    }
+
+    static async logout(req, res) {
+        try {
+            req.session.destroy();
+            res.redirect('/login');
+        } catch (error) {
+            console.log(error)
         }
     }
 
