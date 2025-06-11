@@ -1,24 +1,44 @@
 const Thought = require('../models/Thought')
 const User = require('../models/User')
 
+const { Op, fn, col, where, or } = require('sequelize');
+
 module.exports = class ThoughtController {
 
     static async showThoughts(req, res) {
         try {
 
-            let search = '';
-            
-            if (req.query.search) {
-                search = req.query.search
+            let search = req.query.search || '';
+
+            console.log("SEARCH TERM:", search);
+
+            let order = 'DESC'
+
+            if (req.query.order === 'old') {
+                order = 'ASC'
+            } else {
+                order = 'DESC'
             }
 
             const thoughtData = await Thought.findAll({
-                include: User, // inclui os dados do usuário dono do pensamento
+                include: User,
+                where: {
+                    title: where(fn('LOWER', col('title')), {
+                        [Op.like]: `%${search.toLowerCase()}%`
+                    })
+                },
+                order: [['createdAt', order]],
                 raw: true,
                 nest: true
             });
 
-            res.render('thoughts/home', { thoughts: thoughtData });
+            let thoughtQTD = thoughtData.length
+
+            if (thoughtQTD === 0) {
+                thoughtQTD = false
+            }
+
+            res.render('thoughts/home', { thoughts: thoughtData, search, thoughtQTD });
         } catch (error) {
             console.error('Erro ao buscar pensamentos:', error);
             res.status(500).send('Erro ao buscar pensamentos');
