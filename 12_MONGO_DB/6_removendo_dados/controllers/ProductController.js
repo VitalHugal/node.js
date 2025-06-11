@@ -5,7 +5,7 @@ module.exports = class ProductController {
     static async showProducts(req, res) {
         try {
             const products = await Product.getProducts()
-            console.log(products) 
+            console.log(products)
             res.render('products/all', { products })
         } catch (error) {
             console.error(error)
@@ -34,14 +34,29 @@ module.exports = class ProductController {
         }
     }
 
-    static async getProduct(req, res){
+    static async getProduct(req, res) {
         const id = req.params.id
 
-        const product = await Product.getProductById(id)
+        try {
+            const product = await Product.getProductById(id)
 
-        console.log('aqui')
-        console.log(product)
+            if (!product) {
+                return res.status(404).send('Produto não encontrado')
+            }
 
-        res.render('products/product', {product})
+            res.render('products/product', { product })
+        } catch (error) {
+            console.error('Erro ao buscar produto:', error)
+            res.status(400).send('ID inválido ou erro ao buscar produto')
+        }
+    }
+
+
+    static async removeProduct(req, res) {
+        const id = req.params.id
+
+        await Product.removeProductById(id)
+
+        res.redirect('/products')
     }
 }

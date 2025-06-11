@@ -1005,3 +1005,25 @@ Resgatando um dado
 - Vamos enviar o dado para o Controller e depois para a view;
 _______________________________________________________
 
+Excluindo dados
+
+- Para remover um dado do banco, vamos utilizar o método deleteOne;
+- que recebe um filtro como no de resgatar dados, utilizaremos o campo _id;
+- Basta executar o método no controller e redirecionar após a remoção;
+_______________________________________________________
+
+Editar dado - -> editar get
+
+- Para editar um dado, Primeiramente vamos criar uma view que mostra o formulário preenchido;
+- A ideia é parecida com a de getProduct do nosso projeto;
+- Vamos utilizar o atributo value do input para preencher o campo com a valor salvo;
+_______________________________________________________
+
+Editar dado - -> editar post
+
+- Para salvar um dado editado será necessa´rio criar um método no Model;
+- Que utiliza o método updateOne do MongoDB;
+- Onde passamos o id e também os dados para atualizar;
+- Criaremos também uma função no Controller e a rota;
+_______________________________________________________
+

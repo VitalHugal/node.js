@@ -36,6 +36,26 @@ class Product {
         return product
     }
 
+    static async removeProductById(id) {
+
+        // const id = req.params.id
+        await conn
+            .db()
+            .collection('products')
+            .deleteOne({ _id: new ObjectId(id) })
+
+        return
+    }
+
+    updateProduct(id) {
+        conn
+            .db()
+            .collection('products')
+            .updateOne({ _id: new ObjectId(id) }, { $set: this })
+
+        return
+    }
+
 }
 
 module.exports = Product
