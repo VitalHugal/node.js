@@ -1096,3 +1096,10 @@ Edição de dados - post
 - Depois basta utilizar método updateOne, onde passamos um filtro para atingir o registro correto;
 - E também um objeto com os dados de atualização;
 _______________________________________________________
+
+Removendo dado
+
+- Para remover um dado utilizaremos o método deleteOne;
+- Que leva simplesmente o filtro como argumento, neste caso utilizaremos o _id;
+- Depois basta redirecionar o usuário;
+_______________________________________________________
