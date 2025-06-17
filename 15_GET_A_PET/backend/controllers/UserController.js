@@ -7,7 +7,7 @@ module.exports = class AuthController {
         const { name, email, phone, password, confirmPassword } = req.body
 
         //validation
-        if (!name || !email || !password || !confirmPassword) {
+        if (!name || !email || !password || !confirmPassword || !phone) {
             return res.status(422).json({ message: "Campo obrigatório, verifique." })
         }
 
