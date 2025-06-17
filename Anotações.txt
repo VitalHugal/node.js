@@ -1174,3 +1174,19 @@ Criando uma rota de POST
 - Podemos extrair os dados da requisição, acessando req.body;
 - Da mesma maneira que no get, podemos retornar uma resposta como JSON pela API;
 _______________________________________________________
+
+Adicionando status na resposta 
+
+- Os status podem ajustar no desenvolvimento da nossa aplicação;
+- Exibindo mensagens de sucesso ou erro, por exemplo;
+- Precisamos entre res e o método json definir um número de status HTP;
+- Isso é feito por meio do método status;
+_______________________________________________________
+
+A realidade sobre as APIs
+
+- A API é desenvolvida de forma muito semelhante a quando criamos projetos com Handlebars, por exemplo;
+- Temos algumas alterações leves, como: resposta apenas por JSON;
+- Mas isso acaba até simplificando as coisas, separando as responsabilidade;
+- Ou seja, reaproveitamos todo o conhecimento visto dusrante o curso;
+_______________________________________________________
