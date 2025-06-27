@@ -1,6 +1,5 @@
 const User = require('../models/User')
 
-
 module.exports = class AuthController {
 
     static async register(req, res) {
